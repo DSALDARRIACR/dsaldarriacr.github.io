@@ -1,196 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
-      rel="stylesheet"
-    />
-    <title>Feliz Cumpleaños</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link
-      rel="stylesheet"
-      href="mobile.css"
-      media="only screen and (max-width: 768px)"
-    />
-  </head>
-  <body>
-    <!--Confeti Atras-->
-    <canvas id="canvas1"></canvas>
 
-    <div class="contenedor">
-      <!-- PortaRetrato -->
-      <div class="portaretrato-torta-caja">
-        <div class="portaretrato">
-          <div class="marco">
-            <img src="cumpleañero.png" alt="Foto" />
-          </div>
-          <div class="soporte-marco"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+  <title>Feliz Cumpleaños</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="mobile.css" media="only screen and (max-width: 768px)" />
+</head>
+
+<body>
+  <!--Confeti Atras-->
+  <canvas id="canvas1"></canvas>
+
+  <div class="contenedor">
+    <!-- PortaRetrato -->
+    <div class="portaretrato-torta-caja">
+      <div class="portaretrato">
+        <div class="marco">
+          <img src="cumpleañero.png" alt="Foto" />
         </div>
-
-        <!--Torta De Cumpleaños-->
-        <div class="torta-cumpleaños">
-          <div class="torta">
-            <div class="chocolate"></div>
-          </div>
-          <div class="vela"></div>
-          <div class="llama"></div>
-        </div>
-
-        <!--Caja De Regalo-->
-        <div class="caja-wrapper">
-          <div class="caja">
-            <div class="cinta-de-regalo">
-              <div class="cinta-de-regalo-izquierda"></div>
-              <div class="cinta-de-regalo-derecha"></div>
-              <div class="cinta-de-regalo-centro"></div>
-            </div>
-            <div class="regalos">
-              <div class="regalo-sombra"></div>
-            </div>
-            <div class="regalo"></div>
-            <div class="icono-estrella estrella1"></div>
-            <div class="icono-estrella estrella2"></div>
-            <div class="icono-estrella estrella3"></div>
-            <div class="icono-estrella estrella4"></div>
-            <div class="icono-estrella estrella5"></div>
-          </div>
-        </div>
-
-        <!--Mensaje Feliz Cumpleaños-->
-        <div class="happy-birthday">Happy Birthday</div>
+        <div class="soporte-marco"></div>
       </div>
 
-      <!--Mesa-->
-      <div class="soporte"></div>
+      <!--Torta De Cumpleaños-->
+      <div class="torta-cumpleaños">
+        <div class="torta">
+          <div class="chocolate"></div>
+        </div>
+        <div class="vela"></div>
+        <div class="llama"></div>
+      </div>
+
+      <!--Caja De Regalo-->
+      <div class="caja-wrapper">
+        <div class="caja">
+          <div class="cinta-de-regalo">
+            <div class="cinta-de-regalo-izquierda"></div>
+            <div class="cinta-de-regalo-derecha"></div>
+            <div class="cinta-de-regalo-centro"></div>
+          </div>
+          <div class="regalos">
+            <div class="regalo-sombra"></div>
+          </div>
+          <div class="regalo"></div>
+          <div class="icono-estrella estrella1"></div>
+          <div class="icono-estrella estrella2"></div>
+          <div class="icono-estrella estrella3"></div>
+          <div class="icono-estrella estrella4"></div>
+          <div class="icono-estrella estrella5"></div>
+        </div>
+      </div>
+
+      <!--Mensaje Feliz Cumpleaños-->
+      <div class="happy-birthday">Happy Birthday</div>
     </div>
 
-    <!-- Botón para abrir la carta -->
-    <button class="boton-carta" id="botonCarta">Abrir Carta</button>
+    <!--Mesa-->
+    <div class="soporte"></div>
+  </div>
 
-    <!-- Carta Modal -->
-    <div class="modal-carta" id="modalCarta">
-      <div class="contenido-carta">
-        <button class="cerrar-carta" id="cerrarCarta">×</button>
-        <div class="carta">
-          <h2>Querida Preciosa</h2>
-          <p>
-            En este día tan especial quiero desearte un cumpleaños lleno de alegría,
-            risas y momentos inolvidables. Estoy profundamente agradecido con la vida
-            por haberte puesto en mi camino, por cada momento que compartimos, por cada
-            salida, por cada escapadita donde solo éramos tú y yo. Cada instante a tu
-            lado siempre fue único, hermoso y muy especial.
-          </p>
+  <!-- Botón para abrir la carta -->
+  <button class="boton-carta" id="botonCarta">Abrir Carta</button>
 
-          <p>
-            Hoy es tu día, preciosa. Hoy celebramos el nacimiento de una mujer increíble,
-            fuerte, valiente y capaz de superar cualquier dificultad. Me siento orgulloso
-            de ti, de lo que eres y de la maravillosa persona en la que te has convertido.
-          </p>
+  <!-- Carta Modal -->
+  <div class="modal-carta" id="modalCarta">
+    <div class="contenido-carta">
+      <button class="cerrar-carta" id="cerrarCarta">×</button>
+      <div class="carta">
+        <h2>Querida Preciosa</h2>
+        <p>
+          En este día tan especial quiero desearte un cumpleaños lleno de alegría,
+          risas y momentos inolvidables. Estoy profundamente agradecido con la vida
+          por haberte puesto en mi camino, por cada momento que compartimos, por cada
+          salida, por cada escapadita donde solo éramos tú y yo. Cada instante a tu
+          lado siempre fue único, hermoso y muy especial.
+        </p>
 
-          <p>
-            Sabes, nunca en mi vida me había enamorado tan profundamente. Tú fuiste mi
-            relación más larga, más real y más bonita. Más de cuatro años compartiendo
-            momentos, incluso a distancia, pero siempre juntos. Llegaba del trabajo y te
-            llamaba, tú me llamabas, dormíamos juntos por llamada… y para mí eso era lo más
-            bonito del mundo.
-          </p>
+        <p>
+          Hoy es tu día, preciosa. Hoy celebramos el nacimiento de una mujer increíble,
+          fuerte, valiente y capaz de superar cualquier dificultad. Me siento orgulloso
+          de ti, de lo que eres y de la maravillosa persona en la que te has convertido.
+        </p>
 
-          <p>
-            Cuando casi te venías a vivir conmigo, yo era la persona más feliz del mundo.
-            Pensaba: "Ya mismo viene, ya mismo vamos a estar juntos". Imaginaba dándote tus
-            flores, tus chocolates, tus detalles, y cuidándote en todo. En mi mente repetía:
-            "A donde yo vaya, ella irá conmigo. Nunca más estará sola". Ya me veía recogiéndote
-            en la universidad, saliendo a comer, yendo al parque… haciendo todo juntos.
-          </p>
+        <p>
+          Sabes, nunca en mi vida me había enamorado tan profundamente. Tú fuiste mi
+          relación más larga, más real y más bonita. Más de cuatro años compartiendo
+          momentos, incluso a distancia, pero siempre juntos. Llegaba del trabajo y te
+          llamaba, tú me llamabas, dormíamos juntos por llamada… y para mí eso era lo más
+          bonito del mundo.
+        </p>
 
-          <p>
-            Pero hoy no es un día para recordar lo triste, sino para celebrar que tú cumples un
-            año más de vida. Deseo con todo mi corazón que este año sea diferente, mejor, lleno
-            de cosas hermosas para ti.
-          </p>
 
-          <p> 
-          Y antes de terminar esta carta, solo quiero que sepas algo que nace desde lo más 
-          sincero de mí: cada día voy a trabajar en mí. No solo por mí, sino por nosotros. Porque 
+
+
+        <p> Mira mi niña bonita… yo siempre lo di todo por lo nuestro. Cuando casi te venías a vivir conmigo, yo era la
+          persona más feliz del mundo. Pensaba: “Ya mismo viene, ya mismo vamos a estar juntos”. Me imaginaba dándote
+          tus flores, tus chocolates, tus detalles, cuidándote en todo… y en mi corazón repetía: “A donde yo vaya, ella
+          irá conmigo. Nunca más estará sola”. Ya me veía recogiéndote en la universidad, saliendo a comer, yendo al
+          parque, haciendo todo juntos… viviendo la vida a tu lado como siempre soñamos. </p>
+        <p> Me quedé con todas esas ganas de llevarte a comer, de llegar del trabajo y decirte: “Mi amor, alístate, que
+          nos vamos a cenar”. Me imaginaba diciéndote que te pongas hermosa porque te iba a llevar por unas alitas
+          acevichadas o lo que se nos antojara. Soñaba con esos paseos, con esos momentos que tanto hablamos y que
+          siempre imaginamos vivir. Era lo más bonito del mundo para mí… y aún lo siento así. </p>
+        <p> Y aún quiero vivir todo eso contigo. Porque nos faltan tantas cosas por hacer, tantos sueños por cumplir y
+          tantos momentos por construir. Quiero hacerlos contigo, mi reina. No olvides nunca lo mucho que significas
+          para mí, lo importante que eres y lo especial que siempre vas a ser. Para mí, tú siempre serás esa niña
+          consentida a la que quiero cuidar, proteger y hacer feliz. </p>
+        <p> Tú fuiste esa mujer del proceso… la que me vio crecer desde lo más bajo, la que estuvo conmigo cuando estaba
+          en la universidad, cuando recién empezaba mi carrera, cuando aún no tenía nada pero soñaba con todo. Tú fuiste
+          testigo de cada paso, de cada caída y cada avance. Por eso siempre vas a ser una parte enorme y valiosa de mi
+          vida. </p>
+        <p> Quiero verte triunfar, mi reina. Verte cumplir tus sueños, verte lograr cada meta que tanto anhelas.
+          Imaginarte en tu graduación me llena el corazón; sé que será uno de los momentos más hermosos, y me sentiré
+          tan orgulloso de ti. Y, sinceramente, tampoco sería mala idea que tú estés en la mía… porque siempre soñé con
+          compartir mis logros contigo. </p>
+        <p> Te amo con toda mi alma, y desde ese amor sincero es que quiero mejorar, crecer y convertirme en el hombre
+          que sabes que puedo llegar a ser. Cada día estoy trabajando en mí, para que nuestra relación sea más fuerte,
+          más madura y más bonita. Para que un día podamos mirarnos a los ojos y sentir que valió la pena. </p>
+        <p> Y quiero que lo sepas bien: aquí va a estar siempre tu bebito, dispuesto a resolver, a mejorar y a crecer…
+          porque tú mereces felicidad, y yo quiero ser parte de esa felicidad, mi vida. </p>
+        <p>
+          Pero hoy no es un día para recordar lo triste, sino para celebrar que tú cumples un
+          año más de vida. Deseo con todo mi corazón que este año sea diferente, mejor, lleno
+          de cosas hermosas para ti.
+        </p>
+
+        <p>
+          Y antes de terminar esta carta, solo quiero que sepas algo que nace desde lo más
+          sincero de mí: cada día voy a trabajar en mí. No solo por mí, sino por nosotros. Porque
           tú y yo tenemos una historia que vale la pena sanar, cuidar y reconstruir con paciencia y con amor.
-          </p> 
-          
-          <p> 
+        </p>
+
+        <p>
           Estoy aprendiendo, creciendo y entendiendo muchas cosas que antes no veía.
-          Quiero ser un hombre que actúa, que escucha, que cuida y que da tranquilidad. 
-          Un hombre que te haga sentir segura, amada y acompañada, no solo con palabras bonitas, 
-          sino con hechos reales. 
-          </p> 
-          <p> 
-          No te pido nada hoy, no te presiono, no espero que todo 
-          cambie de un día para otro. Solo quiero que, cuando pienses en mí, recuerdes que aquí hay 
+          Quiero ser un hombre que actúa, que escucha, que cuida y que da tranquilidad.
+          Un hombre que te haga sentir segura, amada y acompañada, no solo con palabras bonitas,
+          sino con hechos reales.
+        </p>
+        <p>
+          No te pido nada hoy, no te presiono, no espero que todo
+          cambie de un día para otro. Solo quiero que, cuando pienses en mí, recuerdes que aquí hay
           alguien que está dispuesto a mejorar de verdad. Alguien que cada día está dando un paso más
           para convertirse en la versión de sí mismo que tú mereces tener a tu lado.
-          </p> 
-          <p> Yo sé que nuestro amor puede ser más fuerte, más maduro y más bonito.
-          Y voy a dar todo de mí para que así sea, para que cuando volvamos a mirarnos a los ojos, puedas sentir orgullo, 
+        </p>
+        <p> Yo sé que nuestro amor puede ser más fuerte, más maduro y más bonito.
+          Y voy a dar todo de mí para que así sea, para que cuando volvamos a mirarnos a los ojos, puedas sentir
+          orgullo,
           calma y la certeza de que este hombre sí aprendió a valorar lo que tiene. </p>
-          <p> Porque lo que siento por ti no se apaga. Solo se transforma en ganas de hacer las cosas bien… contigo. 
-          </p>
+        <p> Porque lo que siento por ti no se apaga. Solo se transforma en ganas de hacer las cosas bien… contigo.
+        </p>
 
-          <p>
-            Ah, y antes que me olvide: ya te envié tu regalo por encomienda por Civa. La clave de
-            recojo es <strong>2011</strong>. 💌🎁
-          </p>
+        <p> Ah, y antes que me olvide: ya te envié tu regalo por encomienda por Civa. La clave de recojo es
+          <strong>2011</strong>. 💌🎁 Ojalá te guste, mi reina… lo elegí pensando en ti, con todo mi cariño. De verdad
+          espero que lo disfrutes y que te saque una sonrisa, porque tú te mereces eso y mucho más. </p>
 
-          <p class="firma">
-            Con cariño,<br />
-            De tu Bebito
-          </p>
-        </div>
+        <p class="firma">
+          Con cariño,<br />
+          De tu Bebito
+        </p>
       </div>
     </div>
+  </div>
 
-    <!--Confeti Delante-->
-    <canvas id="canvas2"></canvas>
+  <!--Confeti Delante-->
+  <canvas id="canvas2"></canvas>
 
-    <!--Audios con rutas corregidas-->
-    <audio id="soplido" src="soplar1.mp3" preload="auto"></audio>
-    <audio id="cancion" src="cancion.mp3" preload="auto"></audio>
+  <!--Audios con rutas corregidas-->
+  <audio id="soplido" src="soplar1.mp3" preload="auto"></audio>
+  <audio id="cancion" src="cancion.mp3" preload="auto"></audio>
 
-    <div class="overlay"></div>
+  <div class="overlay"></div>
 
-    <!-- Scripts -->
-    <script src="Confeti.js"></script>
-    <script src="Confeti2.js"></script>
-    <script src="Sorpresa.js"></script>
-    
-    <!-- Script para controlar la carta -->
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const botonCarta = document.getElementById('botonCarta');
-        const cerrarCarta = document.getElementById('cerrarCarta');
-        const modalCarta = document.getElementById('modalCarta');
-        
-        if (botonCarta && modalCarta && cerrarCarta) {
-          botonCarta.addEventListener('click', function() {
-            modalCarta.classList.add('activo');
-          });
-          
-          cerrarCarta.addEventListener('click', function() {
+  <!-- Scripts -->
+  <script src="Confeti.js"></script>
+  <script src="Confeti2.js"></script>
+  <script src="Sorpresa.js"></script>
+
+  <!-- Script para controlar la carta -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const botonCarta = document.getElementById('botonCarta');
+      const cerrarCarta = document.getElementById('cerrarCarta');
+      const modalCarta = document.getElementById('modalCarta');
+
+      if (botonCarta && modalCarta && cerrarCarta) {
+        botonCarta.addEventListener('click', function () {
+          modalCarta.classList.add('activo');
+        });
+
+        cerrarCarta.addEventListener('click', function () {
+          modalCarta.classList.remove('activo');
+        });
+
+        // Cerrar al hacer clic fuera del contenido
+        modalCarta.addEventListener('click', function (e) {
+          if (e.target === modalCarta) {
             modalCarta.classList.remove('activo');
-          });
-          
-          // Cerrar al hacer clic fuera del contenido
-          modalCarta.addEventListener('click', function(e) {
-            if (e.target === modalCarta) {
-              modalCarta.classList.remove('activo');
-            }
-          });
-        }
-      });
-    </script>
-  </body>
+          }
+        });
+      }
+    });
+  </script>
+</body>
+
 </html>
-
-
