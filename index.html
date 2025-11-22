@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <title>Feliz Cumpleaños</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="mobile.css"
+      media="only screen and (max-width: 768px)"
+    />
+  </head>
+  <body>
+    <!--Confeti Atras-->
+    <canvas id="canvas1"></canvas>
+
+    <div class="contenedor">
+      <!-- PortaRetrato -->
+      <div class="portaretrato-torta-caja">
+        <div class="portaretrato">
+          <div class="marco">
+            <img src="cumpleañero.png" alt="Foto" />
+          </div>
+          <div class="soporte-marco"></div>
+        </div>
+
+        <!--Torta De Cumpleaños-->
+        <div class="torta-cumpleaños">
+          <div class="torta">
+            <div class="chocolate"></div>
+          </div>
+          <div class="vela"></div>
+          <div class="llama"></div>
+        </div>
+
+        <!--Caja De Regalo-->
+        <div class="caja-wrapper">
+          <div class="caja">
+            <div class="cinta-de-regalo">
+              <div class="cinta-de-regalo-izquierda"></div>
+              <div class="cinta-de-regalo-derecha"></div>
+              <div class="cinta-de-regalo-centro"></div>
+            </div>
+            <div class="regalos">
+              <div class="regalo-sombra"></div>
+            </div>
+            <div class="regalo"></div>
+            <div class="icono-estrella estrella1"></div>
+            <div class="icono-estrella estrella2"></div>
+            <div class="icono-estrella estrella3"></div>
+            <div class="icono-estrella estrella4"></div>
+            <div class="icono-estrella estrella5"></div>
+          </div>
+        </div>
+
+        <!--Mensaje Feliz Cumpleaños-->
+        <div class="happy-birthday">Happy Birthday</div>
+      </div>
+
+      <!--Mesa-->
+      <div class="soporte"></div>
+    </div>
+
+    <!-- Botón para abrir la carta -->
+    <button class="boton-carta" id="botonCarta">Abrir Carta</button>
+
+    <!-- Carta Modal -->
+    <div class="modal-carta" id="modalCarta">
+      <div class="contenido-carta">
+        <button class="cerrar-carta" id="cerrarCarta">×</button>
+        <div class="carta">
+          <h2>Querida Preciosa</h2>
+          <p>
+            En este día tan especial quiero desearte un cumpleaños lleno de alegría,
+            risas y momentos inolvidables. Estoy profundamente agradecido con la vida
+            por haberte puesto en mi camino, por cada momento que compartimos, por cada
+            salida, por cada escapadita donde solo éramos tú y yo. Cada instante a tu
+            lado siempre fue único, hermoso y muy especial.
+          </p>
+
+          <p>
+            Hoy es tu día, preciosa. Hoy celebramos el nacimiento de una mujer increíble,
+            fuerte, valiente y capaz de superar cualquier dificultad. Me siento orgulloso
+            de ti, de lo que eres y de la maravillosa persona en la que te has convertido.
+          </p>
+
+          <p>
+            Sabes, nunca en mi vida me había enamorado tan profundamente. Tú fuiste mi
+            relación más larga, más real y más bonita. Más de cuatro años compartiendo
+            momentos, incluso a distancia, pero siempre juntos. Llegaba del trabajo y te
+            llamaba, tú me llamabas, dormíamos juntos por llamada… y para mí eso era lo más
+            bonito del mundo.
+          </p>
+
+          <p>
+            Cuando casi te venías a vivir conmigo, yo era la persona más feliz del mundo.
+            Pensaba: "Ya mismo viene, ya mismo vamos a estar juntos". Imaginaba dándote tus
+            flores, tus chocolates, tus detalles, y cuidándote en todo. En mi mente repetía:
+            "A donde yo vaya, ella irá conmigo. Nunca más estará sola". Ya me veía recogiéndote
+            en la universidad, saliendo a comer, yendo al parque… haciendo todo juntos.
+          </p>
+
+          <p>
+            Pero hoy no es un día para recordar lo triste, sino para celebrar que tú cumples un
+            año más de vida. Deseo con todo mi corazón que este año sea diferente, mejor, lleno
+            de cosas hermosas para ti.
+          </p>
+
+          <p>
+            Quiero que sepas que cada día trabajaré en mí, para ser mejor persona y demostrarte
+            que un hombre sí puede cambiar por la mujer que ama. Tú eres el amor de mi vida,
+            preciosa. Te amo, te extraño, y cuánto quisiera estar hoy ahí contigo por tu cumpleaños,
+            verte sonreír, verte feliz, verte brillar como siempre. 🎂✨
+          </p>
+
+          <p>
+            Ah, y antes que me olvide: ya te envié tu regalo por encomienda por Civa. La clave de
+            recojo es <strong>2011</strong>. 💌🎁
+          </p>
+
+          <p class="firma">
+            Con cariño,<br />
+            De tu Bebito
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!--Confeti Delante-->
+    <canvas id="canvas2"></canvas>
+
+    <!--Audios con rutas corregidas-->
+    <audio id="soplido" src="soplar1.mp3" preload="auto"></audio>
+    <audio id="cancion" src="cancion.mp3" preload="auto"></audio>
+
+    <div class="overlay"></div>
+
+    <!-- Scripts -->
+    <script src="Confeti.js"></script>
+    <script src="Confeti2.js"></script>
+    <script src="Sorpresa.js"></script>
+    
+    <!-- Script para controlar la carta -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const botonCarta = document.getElementById('botonCarta');
+        const cerrarCarta = document.getElementById('cerrarCarta');
+        const modalCarta = document.getElementById('modalCarta');
+        
+        if (botonCarta && modalCarta && cerrarCarta) {
+          botonCarta.addEventListener('click', function() {
+            modalCarta.classList.add('activo');
+          });
+          
+          cerrarCarta.addEventListener('click', function() {
+            modalCarta.classList.remove('activo');
+          });
+          
+          // Cerrar al hacer clic fuera del contenido
+          modalCarta.addEventListener('click', function(e) {
+            if (e.target === modalCarta) {
+              modalCarta.classList.remove('activo');
+            }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
+
