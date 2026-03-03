@@ -1,0 +1,785 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+    color: white;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Canvas para partículas - Fondo negro */
+#particlesCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    z-index: -1;
+}
+
+/* Contenido principal */
+.content {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ========== HERO SECTION ========== */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+/* ========== ÚNICA CARD GRANDE ========== */
+.main-card {
+    background: #000000;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    padding: 40px 35px;
+    max-width: 900px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8);
+    animation: fadeInUp 1s ease;
+}
+
+/* Líneas decorativas en la card grande */
+.main-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(
+        45deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.1) 20%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0.1) 80%,
+        transparent 100%
+    );
+    border-radius: 27px;
+    z-index: -1;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.main-card:hover::before {
+    opacity: 1;
+    background: linear-gradient(
+        45deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.2) 20%,
+        rgba(255, 255, 255, 0.5) 50%,
+        rgba(255, 255, 255, 0.2) 80%,
+        transparent 100%
+    );
+}
+
+.main-card:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 30px 50px rgba(255, 255, 255, 0.1);
+}
+
+/* Contenido de la card */
+.card-content {
+    width: 100%;
+}
+
+/* ========== NUEVAS SECCIONES ========== */
+
+/* Profile Section - Foto + Info + CV */
+.profile-section {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Foto de perfil */
+.profile-image {
+    flex: 0 0 auto;
+}
+
+.profile-image img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.profile-image img:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+}
+
+/* Información del perfil */
+.profile-info {
+    flex: 1;
+    text-align: left;
+    min-width: 280px;
+}
+
+.profile-name {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 5px;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.profile-handle {
+    font-size: 1rem;
+    color: #888;
+    margin-bottom: 10px;
+    font-family: monospace;
+}
+
+.profile-title {
+    font-size: 1.2rem;
+    color: #ccc;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.profile-subtitle {
+    font-size: 1rem;
+    color: #aaa;
+    margin-bottom: 15px;
+}
+
+/* Iconos de redes sociales */
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.social-icons a {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 1.2rem;
+}
+
+.social-icons a:hover {
+    background: white;
+    color: black;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+}
+
+/* Botón CV */
+.cv-button-container {
+    flex: 0 0 auto;
+}
+
+.cv-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 12px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    white-space: nowrap;
+}
+
+.cv-btn i {
+    font-size: 1.1rem;
+}
+
+.cv-btn:hover {
+    background: white;
+    color: black;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+}
+
+/* Línea divisoria */
+.divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    margin: 20px 0;
+}
+
+/* ========== ESTADÍSTICAS ========== */
+.stats-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    text-align: center;
+    min-width: 140px;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    line-height: 1.2;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.8rem;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ========== SECCIÓN DE PROYECTOS ========== */
+.projects {
+    padding: 80px 0;
+}
+
+.projects h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 40px;
+    color: white;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.project-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 25px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: fadeInUp 1s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 15px 30px rgba(255, 255, 255, 0.1);
+}
+
+.project-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.project-card p {
+    color: #cccccc;
+    font-size: 0.95rem;
+}
+
+/* ========== SECCIÓN DE CONTACTO ========== */
+.contact {
+    padding: 80px 0;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    margin-bottom: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: white;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.contact p {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    color: #cccccc;
+}
+
+.social-links {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+}
+
+.social-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 8px 18px;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background: white;
+    color: black;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(255, 255, 255, 0.2);
+}
+
+/* ========== ANIMACIONES ========== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 968px) {
+    .main-card {
+        max-width: 95%;
+    }
+    
+    .profile-section {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+    
+    .profile-info {
+        text-align: center;
+    }
+    
+    .social-icons {
+        justify-content: center;
+    }
+    
+    .profile-image img {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .profile-name {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        margin-top: -30px;
+    }
+    
+    .main-card {
+        padding: 30px 25px;
+    }
+    
+    .cv-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .social-icons a {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .stats-container {
+        gap: 15px;
+    }
+    
+    .stat-item {
+        min-width: 100px;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .stat-label {
+        font-size: 0.7rem;
+    }
+    
+    .social-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .social-links a {
+        width: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        margin-top: -20px;
+    }
+    
+    .main-card {
+        padding: 20px 15px;
+    }
+    
+    .profile-name {
+        font-size: 1.8rem;
+    }
+    
+    .profile-title {
+        font-size: 1rem;
+    }
+    
+    .profile-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .social-icons {
+        gap: 10px;
+    }
+    
+    .social-icons a {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .stats-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .stat-item {
+        width: 100%;
+        max-width: 200px;
+    }
+}
+
+/* ========== MODAL ========== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: #000000;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+    animation: modalFadeIn 0.3s ease;
+}
+
+.modal-content::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(
+        45deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.1) 20%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0.1) 80%,
+        transparent 100%
+    );
+    border-radius: 27px;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+.modal-header {
+    padding: 20px 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    color: white;
+    font-size: 1.5rem;
+    margin: 0;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.close-modal {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-modal:hover {
+    color: white;
+    transform: scale(1.1);
+}
+
+.modal-body {
+    padding: 30px 25px;
+    text-align: center;
+}
+
+.birthday-date {
+    color: #ccc;
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+}
+
+.birthday-date strong {
+    color: white;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.countdown-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.countdown-box {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px 15px;
+    min-width: 100px;
+    text-align: center;
+}
+
+.countdown-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    line-height: 1.2;
+    margin-bottom: 5px;
+}
+
+.countdown-label {
+    display: block;
+    font-size: 0.9rem;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.next-birthday {
+    color: #888;
+    font-size: 1rem;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hacer clickeable el stat-item del cumpleaños */
+#birthday-stat {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#birthday-stat:hover {
+    transform: scale(1.05);
+}
+
+#birthday-stat:hover .stat-number {
+    text-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
+}
+
+/* ========== SECCIÓN SOBRE MÍ - CORREGIDA Y MÁS PEGADA ========== */
+.about-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0px 20px 60px 20px;
+    margin-top: -100px;  /* Valor negativo para subir la card */
+    position: relative;
+    z-index: 2;
+}
+
+.about-card {
+    background: #000000;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    padding: 45px 40px;
+    max-width: 800px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8);
+    animation: fadeInUp 1s ease;
+}
+
+/* Líneas decorativas en la card (mismo estilo que la card grande) */
+.about-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(
+        45deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.1) 20%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0.1) 80%,
+        transparent 100%
+    );
+    border-radius: 27px;
+    z-index: -1;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.about-card:hover::before {
+    opacity: 1;
+    background: linear-gradient(
+        45deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.2) 20%,
+        rgba(255, 255, 255, 0.5) 50%,
+        rgba(255, 255, 255, 0.2) 80%,
+        transparent 100%
+    );
+}
+
+.about-card:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 30px 50px rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
+}
+
+.about-title {
+    font-size: 2rem;
+    color: white;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    margin-bottom: 20px;
+    text-align: left;
+    border-left: 4px solid rgba(255, 255, 255, 0.5);
+    padding-left: 20px;
+}
+
+.about-text {
+    color: #cccccc;
+    font-size: 1rem;
+    line-height: 1.8;
+    text-align: justify;
+    margin: 0;
+}
+
+/* Responsive para Sobre Mí */
+@media (max-width: 968px) {
+    .about-section {
+        margin-top: -80px;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-section {
+        margin-top: -60px;
+        padding: 0px 20px 40px 20px;
+    }
+    
+    .about-card {
+        padding: 25px 25px;
+        max-width: 90%;
+    }
+    
+    .about-title {
+        font-size: 1.8rem;
+        padding-left: 15px;
+    }
+    
+    .about-text {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-section {
+        margin-top: -40px;
+        padding: 0px 20px 30px 20px;
+    }
+    
+    .about-card {
+        padding: 20px 20px;
+    }
+    
+    .about-title {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+    
+    .about-text {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+}
