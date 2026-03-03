@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portafolio | ChapuDev</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Canvas para las partículas (fondo) -->
+    <canvas id="particlesCanvas"></canvas>
+    
+    <!-- Contenido principal -->
+    <main class="content">
+        <!-- HERO SECTION CON CARD GRANDE -->
+        <section class="hero">
+            <!-- CARD GRANDE NEGRA -->
+            <div class="main-card">
+                <div class="card-content">
+                    <!-- SECCIÓN SUPERIOR: FOTO + INFO + CV -->
+                    <div class="profile-section">
+                        <!-- Foto de perfil izquierda -->
+                        <div class="profile-image">
+                            <img src="assets/profile.jpg" alt="Foto de perfil" onerror="this.src='https://via.placeholder.com/120x120?text=FOTO'">
+                        </div>
+                        
+                        <!-- Información central -->
+                        <div class="profile-info">
+                            <h2 class="profile-name">{ ChapuDev }</h2>
+                            <p class="profile-handle">@chapudev</p>
+                            <p class="profile-title">Ingeniero de Sistemas</p>
+                            <p class="profile-subtitle">Fullstack Developer & Automation Engineer</p>
+                            
+                            <!-- Redes sociales solo iconos -->
+                            <div class="social-icons">
+                                <a href="https://github.com/DSALDARRIACR" target="_blank"><i class="fab fa-github"></i></a>
+                                <a href="https://www.linkedin.com/in/darlin-josue-saldarriaga-cruz-8700a821a" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://www.instagram.com/darlyn_josue?igsh=MTBha3VnNTdpN2s2MA==" target="_blank"><i class="fab fa-instagram"></i></a>
+                                <a href="https://www.tiktok.com/@chapu074?_r=1&_t=ZS-94MxBzNbdlY" target="_blank"><i class="fab fa-tiktok"></i></a>
+                                <a href="mailto:saldarriagacruz31@gmail.com" target="_blank"><i class="far fa-envelope"></i></a>
+                            </div>
+                        </div>
+                        
+                        <!-- Botón CV derecha -->
+                        <div class="cv-button-container">
+                            <a href="#" class="cv-btn" id="download-cv">
+                                <i class="fas fa-download"></i> Descargar CV
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Línea divisoria -->
+                    <div class="divider"></div>
+                    
+                    <!-- ESTADÍSTICAS (abajo) -->
+                    <div class="stats-container">
+                        <div class="stat-item" id="birthday-stat">
+                            <span class="stat-number" id="days-counter">296</span>
+                            <span class="stat-label">DÍAS PARA MI CUMPLE</span>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <span class="stat-number">6+</span>
+                            <span class="stat-label">PROYECTOS CREADOS</span>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <span class="stat-number">5+</span>
+                            <span class="stat-label">CLIENTES SATISFECHOS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN SOBRE MÍ - CARD PEQUEÑA -->
+<section class="about-section">
+    <div class="about-card">
+        <h2 class="about-title">Sobre Mí</h2>
+        <p class="about-text">
+            Desarrollador software con formación en Ingeniería de Sistemas y más de 1 año y medio de experiencia, 
+            apasionado por la tecnología y la creación de soluciones que aportan valor real al negocio. Inicié mi 
+            camino desarrollando proyectos personales, lo que fortaleció mis bases técnicas y me permitió evolucionar 
+            hacia sistemas empresariales como inventario, cotizaciones y ERP. A lo largo de mi experiencia asumí retos 
+            técnicos y de gestión, liderando equipos de trabajo en el desarrollo y mantenimiento de soluciones 
+            tecnológicas. He participado activamente en la mejora de procesos, optimización de operaciones y soporte 
+            de plataformas internas. Me caracterizo por la constancia, el compromiso y una mentalidad de mejora continua.
+        </p>
+    </div>
+</section>
+
+        <!-- SECCIÓN DE PROYECTOS -->
+        <section id="projects" class="projects">
+            <h2>Mis Proyectos</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Proyecto 1</h3>
+                    <p>Descripción del proyecto increíble</p>
+                </div>
+                <div class="project-card">
+                    <h3>Proyecto 2</h3>
+                    <p>Descripción del proyecto asombroso</p>
+                </div>
+                <div class="project-card">
+                    <h3>Proyecto 3</h3>
+                    <p>Descripción del proyecto espectacular</p>
+                </div>
+                <div class="project-card">
+                    <h3>Proyecto 4</h3>
+                    <p>Descripción del proyecto increíble</p>
+                </div>
+                <div class="project-card">
+                    <h3>Proyecto 5</h3>
+                    <p>Descripción del proyecto asombroso</p>
+                </div>
+                <div class="project-card">
+                    <h3>Proyecto 6</h3>
+                    <p>Descripción del proyecto espectacular</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE CONTACTO -->
+        <section id="contact" class="contact">
+            <h2>Contacto</h2>
+            <p>¿Quieres trabajar conmigo? ¡Hablemos!</p>
+            <div class="social-links">
+                <a href="https://github.com/DSALDARRIACR" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/darlin-josue-saldarriaga-cruz-8700a821a" target="_blank">LinkedIn</a>
+                <a href="https://www.instagram.com/darlyn_josue?igsh=MTBha3VnNTdpN2s2MA==" target="_blank">Instagram</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- MODAL PARA CUMPLEAÑOS -->
+    <div id="birthdayModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🎂 CUENTA REGRESIVA 🎂</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p class="birthday-date">Mi cumpleaños es el <strong>31 de agosto</strong></p>
+                <div class="countdown-container">
+                    <div class="countdown-box">
+                        <span class="countdown-number" id="days">0</span>
+                        <span class="countdown-label">Días</span>
+                    </div>
+                    <div class="countdown-box">
+                        <span class="countdown-number" id="hours">0</span>
+                        <span class="countdown-label">Horas</span>
+                    </div>
+                    <div class="countdown-box">
+                        <span class="countdown-number" id="minutes">0</span>
+                        <span class="countdown-label">Minutos</span>
+                    </div>
+                    <div class="countdown-box">
+                        <span class="countdown-number" id="seconds">0</span>
+                        <span class="countdown-label">Segundos</span>
+                    </div>
+                </div>
+                <p class="next-birthday" id="nextBirthdayText"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
