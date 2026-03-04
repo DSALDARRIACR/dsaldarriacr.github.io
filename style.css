@@ -22,6 +22,13 @@ body {
     background: #000000;
     z-index: -1;
 }
+.real-name {
+    font-size: 0.9rem;
+    color: #3b82f6;
+    margin-bottom: 8px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
 
 /* Contenido principal */
 .content {
@@ -1440,3 +1447,4 @@ body {
         padding: 20px 15px 40px;
     }
 }
+
