@@ -311,7 +311,7 @@ if (cvBtn) {
         e.preventDefault();
         
         // Aquí puedes poner la ruta de tu archivo PDF
-        const cvUrl = 'assets/CV-SALDARRIAGA-CRUZ-DARLIN-JOSUE10-2026.pdf'; // Cambia esto a la ruta correcta
+        const cvUrl = 'CV-SALDARRIAGA-CRUZ-DARLIN-JOSUE10-2026.pdf'; // Cambia esto a la ruta correcta
         
         // Crear un enlace temporal para descargar
         const link = document.createElement('a');
@@ -367,3 +367,4 @@ if (prevBtn && nextBtn) {
     // Auto-slide cada 5 segundos
     setInterval(nextSlide, 5000);
 }
+
