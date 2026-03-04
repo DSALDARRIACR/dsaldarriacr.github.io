@@ -322,3 +322,48 @@ if (cvBtn) {
         document.body.removeChild(link);
     });
 }
+
+
+// ========== SLIDER DE PROYECTOS ==========
+const slides = document.querySelectorAll('.slider-slide');
+const prevBtn = document.querySelector('.slider-control.prev');
+const nextBtn = document.querySelector('.slider-control.next');
+const indicators = document.querySelectorAll('.indicator');
+let currentSlide = 0;
+
+function showSlide(index) {
+    slides.forEach(slide => slide.classList.remove('active'));
+    indicators.forEach(ind => ind.classList.remove('active'));
+    
+    slides[index].classList.add('active');
+    indicators[index].classList.add('active');
+    currentSlide = index;
+}
+
+function nextSlide() {
+    let next = currentSlide + 1;
+    if (next >= slides.length) {
+        next = 0;
+    }
+    showSlide(next);
+}
+
+function prevSlide() {
+    let prev = currentSlide - 1;
+    if (prev < 0) {
+        prev = slides.length - 1;
+    }
+    showSlide(prev);
+}
+
+if (prevBtn && nextBtn) {
+    prevBtn.addEventListener('click', prevSlide);
+    nextBtn.addEventListener('click', nextSlide);
+    
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => showSlide(index));
+    });
+    
+    // Auto-slide cada 5 segundos
+    setInterval(nextSlide, 5000);
+}
