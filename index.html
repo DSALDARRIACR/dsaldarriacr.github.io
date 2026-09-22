@@ -1,541 +1,84 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Portafolio | ChapuDev</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome para iconos -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#04060f" />
+  <title>Flores amarillas 🌻</title>
+  <meta name="description" content="Un pequeño jardín de flores amarillas hecho con HTML, CSS y JavaScript. Sin regar, sin marchitarse." />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Feliz día de las flores amarillas 🌻" />
+  <meta property="og:description" content="Comprar flores era demasiado fácil... así que las programé." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500&family=Outfit:wght@300;400;600&family=JetBrains+Mono&display=swap" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.92em%22 font-size=%2292%22>🌻</text></svg>" />
+
+  <!-- Si estás leyendo esto, eres demasiado curiosa 😂 -->
 </head>
+
 <body>
-    <!-- Canvas para las partículas (fondo) -->
-    <canvas id="particlesCanvas"></canvas>
-    
-    <!-- Contenido principal -->
-    <main class="content">
-        <!-- HERO SECTION CON CARD GRANDE -->
-        <section class="hero">
-            <!-- CARD GRANDE NEGRA -->
-            <div class="main-card">
-                <div class="card-content">
-                    <!-- SECCIÓN SUPERIOR: FOTO + INFO + CV -->
-                    <div class="profile-section">
-                        <!-- Foto de perfil izquierda -->
-                        <div class="profile-image">
-                            <img src="profile.jpg" alt="Foto de perfil" onerror="this.src='https://via.placeholder.com/120x120?text=FOTO'">
-                        </div>
-                        
-                        <!-- Información central -->
-                        <div class="profile-info">
-                            <h2 class="profile-name">{ ChapuDev }</h2>
-                            <p class="real-name">Darlin Josue Saldarriaga Cruz</p> 
-                            <p class="profile-handle">@chapudev</p>
-                            <p class="profile-title">Ingeniero de Sistemas</p>
-                            <p class="profile-subtitle">Fullstack Developer & Automation Engineer</p>
-                            
-                            <!-- Redes sociales solo iconos -->
-                            <div class="social-icons">
-                                <a href="https://github.com/DSALDARRIACR" target="_blank"><i class="fab fa-github"></i></a>
-                                <a href="https://www.linkedin.com/in/darlin-josue-saldarriaga-cruz-8700a821a" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="https://www.instagram.com/darlyn_josue?igsh=MTBha3VnNTdpN2s2MA==" target="_blank"><i class="fab fa-instagram"></i></a>
-                                <a href="https://www.tiktok.com/@chapu074?_r=1&_t=ZS-94MxBzNbdlY" target="_blank"><i class="fab fa-tiktok"></i></a>
-                                <a href="mailto:saldarriagacruz31@gmail.com" target="_blank"><i class="far fa-envelope"></i></a>
-                            </div>
-                        </div>
-                        
-                        <!-- Botón CV derecha -->
-                        <div class="cv-button-container">
-                            <a href="cv-darlin-saldarriaga.pdf" class="cv-btn" id="download-cv">
-                                <i class="fas fa-download"></i> Descargar CV
-                            </a>
-                        </div>
-                    </div>
 
-                    <!-- Línea divisoria -->
-                    <div class="divider"></div>
-                    
-                    <!-- ESTADÍSTICAS (abajo) -->
-                    <div class="stats-container">
-                        <div class="stat-item" id="birthday-stat">
-                            <span class="stat-number" id="days-counter">296</span>
-                            <span class="stat-label">DÍAS PARA MI CUMPLE</span>
-                        </div>
-                        
-                        <div class="stat-item">
-                            <span class="stat-number">6+</span>
-                            <span class="stat-label">PROYECTOS CREADOS</span>
-                        </div>
-                        
-                        <div class="stat-item">
-                            <span class="stat-number">5+</span>
-                            <span class="stat-label">CLIENTES SATISFECHOS</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <!-- ===== Fondo nocturno ===== -->
+  <div class="scene" aria-hidden="true">
+    <div class="scene__sky"></div>
+    <div class="scene__stars" id="stars"></div>
+    <div class="scene__fireflies" id="fireflies"></div>
+    <div class="scene__horizon"></div>
+    <div class="scene__vignette"></div>
+  </div>
 
-        <!-- SECCIÓN SOBRE MÍ - CARD PEQUEÑA -->
-<section class="about-section">
-    <div class="about-card">
-        <h2 class="about-title">Sobre Mí</h2>
-        <p class="about-text">
-Ingeniero de Sistemas enfocado en crear soluciones escalables, 
-automatizar procesos y desarrollar sistemas que transforman necesidades del negocio en tecnología eficiente. Con experiencia en el desarrollo de sistemas empresariales y mejora de procesos, aportando soluciones sólidas que optimizan la operación y generan valor real.        </p>
-    </div>
-</section>
+  <!-- ===== Pétalos cayendo (se llena desde JS) ===== -->
+  <div class="petal-rain" id="petalRain" aria-hidden="true"></div>
 
-<!-- SECCIÓN HERRAMIENTAS & STACK -->
-<section class="skills-section">
-    <div class="skills-card">
-        <h2 class="skills-title">HERRAMIENTAS & STACK</h2>
-        
-        <div class="skills-grid-container">
-            <!-- Frontend Development -->
-            <div class="skills-category">
-                <h3 class="category-title">
-                    <i class="fas fa-code category-icon"></i>
-                    Frontend Development
-                </h3>
-                <div class="skills-items-grid">
-                    <div class="skill-item-card">
-                        <i class="fab fa-react skill-icon" style="color: #61DAFB;"></i>
-                        <span>React (Vite)</span>
-                    </div>
-                    <div class="skill-item-card">
-                        <i class="fab fa-js skill-icon" style="color: #F7DF1E;"></i>
-                        <span>JavaScript</span>
-                    </div>
-                    <div class="skill-item-card">
-                        <i class="fab fa-vuejs skill-icon" style="color: #42b883;"></i>
-                        <span>Vue.js</span>
-                    </div>
-                    <div class="skill-item-card">
-                        <i class="fab fa-css3-alt skill-icon" style="color: #264de4;"></i>
-                        <span>TailwindCSS</span>
-                    </div>
-                    <div class="skill-item-card">
-                        <i class="fab fa-html5 skill-icon" style="color: #E34F26;"></i>
-                        <span>HTML5 / CSS3</span>
-                    </div>
-                    
-                    <div class="skill-item-card">
-                        <i class="fab fa-laravel skill-icon" style="color: #FF2D20;"></i>
-                        <span>Laravel</span>
-                    </div>
-                </div>
-            </div>
+  <main class="stage">
 
-            <!-- Backend & Cloud -->
-            <div class="skills-category">
-                <h3 class="category-title">
-                    <i class="fas fa-server category-icon"></i>
-                    Backend & Cloud
-                </h3>
-                <div class="skills-items-grid">
-                    <div class="skill-item-card">
-                        <i class="fab fa-python skill-icon" style="color: #3776AB;"></i>
-                        <span>Python</span>
-                    </div>
-                    <div class="skill-item-card">
-                        <i class="fab fa-php skill-icon" style="color: #777BB4;"></i>
-                        <span>PHP</span>
-                    </div>
-                    <div class="skill-item-card">
-                        <i class="fab fa-node-js skill-icon" style="color: #68A063;"></i>
-                        <span>Node.js</span>
-                    </div>
-                    <div class="skill-item-card">
-                        <i class="fab fa-aws skill-icon" style="color: #FF9900;"></i>
-                        <span>AWS</span>
-                    </div>
-                    <div class="skill-item-card">
-                        <i class="fas fa-database skill-icon" style="color: #FFA611;"></i>
-                        <span>Firebase</span>
-                    </div>
-                    <div class="skill-item-card">
-                        <i class="fas fa-database skill-icon" style="color: #3ECF8E;"></i>
-                        <span>Supabase</span>
-                    </div>
-                    <div class="skill-item-card">
-                        <i class="fas fa-database skill-icon" style="color: #CC2927;"></i>
-                        <span>SQL Server</span>
-                    </div>
-                    <div class="skill-item-card">
-                        <i class="fas fa-database skill-icon" style="color: #4479A1;"></i>
-                        <span>MySQL</span>
-                    </div>
-                    <div class="skill-item-card">
-                        <i class="fas fa-cloud skill-icon" style="color: #4A90E2;"></i>
-                        <span>REST APIs</span>
-                    </div>
-                </div>
-            </div>
+    <!-- ===== 1. Intro ===== -->
+    <section class="intro" id="intro" aria-label="Introducción">
+      <p class="intro__line" id="introLine" role="status" aria-live="polite"></p>
 
-            <!-- DevOps & Infrastructure -->
-            <div class="skills-category">
-                <h3 class="category-title">
-                    <i class="fas fa-network-wired category-icon"></i>
-                    DevOps & Infrastructure
-                </h3>
-                <div class="skills-items-grid">
-                    <div class="skill-item-card">
-                        <i class="fab fa-docker skill-icon" style="color: #2496ED;"></i>
-                        <span>Docker</span>
-                    </div>
-                    <div class="skill-item-card">
-                        <i class="fab fa-windows skill-icon" style="color: #00ADEF;"></i>
-                        <span>Windows Server</span>
-                    </div>
-                    <div class="skill-item-card">
-                        <i class="fab fa-linux skill-icon" style="color: #FCC624;"></i>
-                        <span>Linux</span>
-                    </div>
-                    <div class="skill-item-card">
-                        <i class="fas fa-terminal skill-icon" style="color: #4EAA25;"></i>
-                        <span>Terminal Linux</span>
-                    </div>
-                    <div class="skill-item-card">
-                        <i class="fab fa-github skill-icon" style="color: #FFFFFF;"></i>
-                        <span>GitHub</span>
-                    </div>
-                    <div class="skill-item-card">
-                        <i class="fab fa-git-alt skill-icon" style="color: #F05032;"></i>
-                        <span>Git</span>
-                    </div>
-                </div>
-            </div>
+      <button class="btn btn--primary intro__cta is-away" id="startBtn" type="button">
+        Ver tus flores 🌻
+      </button>
 
-            <!-- AI & Automation -->
-            <div class="skills-category">
-                <h3 class="category-title">
-                    <i class="fas fa-robot category-icon"></i>
-                    AI & Automation
-                </h3>
-                <div class="skills-items-grid">
-                    <div class="skill-item-card">
-                        <i class="fas fa-comment-dots skill-icon" style="color: #10A37F;"></i>
-                        <span>ChatGPT</span>
-                    </div>
-                    <div class="skill-item-card">
-                        <i class="fas fa-bolt skill-icon" style="color: #FF6B4A;"></i>
-                        <span>n8n Automation</span>
-                    </div>
-                    <div class="skill-item-card">
-                        <i class="fas fa-plug skill-icon" style="color: #FF6B4A;"></i>
-                        <span>APIs</span>
-                    </div>
-                    <div class="skill-item-card">
-                        <i class="fas fa-eye skill-icon" style="color: #5C6BC0;"></i>
-                        <span>Computer Vision</span>
-                    </div>
-                </div>
-            </div>
+      <button class="btn btn--ghost intro__skip" id="skipBtn" type="button">
+        saltar intro
+      </button>
+    </section>
 
-            <!-- Design & Tools -->
-            <div class="skills-category">
-                <h3 class="category-title">
-                    <i class="fas fa-paint-brush category-icon"></i>
-                    Design & Tools
-                </h3>
-                <div class="skills-items-grid">
-                    <div class="skill-item-card">
-                        <i class="fas fa-chart-bar skill-icon" style="color: #F2C811;"></i>
-                        <span>Power BI</span>
-                    </div>
-                    <div class="skill-item-card">
-                        <i class="fab fa-figma skill-icon" style="color: #F24E1E;"></i>
-                        <span>Figma</span>
-                    </div>
-                    <div class="skill-item-card">
-                        <i class="fab fa-github skill-icon" style="color: #FFFFFF;"></i>
-                        <span>GitHub</span>
-                    </div>
-                    <div class="skill-item-card">
-                        <i class="fab fa-git-alt skill-icon" style="color: #F05032;"></i>
-                        <span>Git</span>
-                    </div>
-                    <div class="skill-item-card">
-                        <i class="fas fa-code skill-icon" style="color: #007ACC;"></i>
-                        <span>VS Code</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    <!-- ===== 2. Jardín ===== -->
+    <section class="garden" id="garden" aria-label="Jardín de flores amarillas" hidden>
+      <p class="garden__hint" id="gardenHint">toca una flor 👆</p>
+      <div class="garden__field" id="field"></div>
+    </section>
 
-<!-- SECCIÓN CERTIFICACIONES - ESTILO MAC -->
-<section class="certs-section">
-    <div class="certs-card">
-        <!-- Barra superior estilo Mac -->
-        <div class="certs-header">
-            <div class="window-controls">
-                <span class="window-dot red"></span>
-                <span class="window-dot yellow"></span>
-                <span class="window-dot green"></span>
-            </div>
-            <div class="window-title">certifications.js - ChapuDev</div>
-            <div class="window-spacer"></div>
-        </div>
-        
-        <!-- Contenido del código -->
-        <div class="certs-code">
-            <pre><span class="code-keyword">const</span> <span class="code-variable">knowledgeBase</span> <span class="code-operator">=</span> [</pre>
-            
-            <div class="code-item">
-                <pre>  {</pre>
-                <pre>    <span class="code-property">id</span>: <span class="code-string">"SCRUM"</span>, <span class="code-property">title</span>: <span class="code-string">"Scrum Fundamentals"</span>, <span class="code-property">issuer</span>: <span class="code-string">"SCRUMstudy"</span></pre>
-                <pre>  },</pre>
-            </div>
-            
-            <div class="code-item">
-                <pre>  {</pre>
-                <pre>    <span class="code-property">id</span>: <span class="code-string">"AZURE"</span>, <span class="code-property">title</span>: <span class="code-string">"Azure Cloud Architect"</span>, <span class="code-property">issuer</span>: <span class="code-string">"Microsoft Learn"</span></pre>
-                <pre>  },</pre>
-            </div>
-            
-            <div class="code-item">
-                <pre>  {</pre>
-                <pre>    <span class="code-property">id</span>: <span class="code-string">"IOT"</span>, <span class="code-property">title</span>: <span class="code-string">"Internet of Things & Arduino"</span>, <span class="code-property">issuer</span>: <span class="code-string">"Cisco NetAcad"</span></pre>
-                <pre>  },</pre>
-            </div>
-            
-            <div class="code-item">
-                <pre>  {</pre>
-                <pre>    <span class="code-property">id</span>: <span class="code-string">"SEC"</span>, <span class="code-property">title</span>: <span class="code-string">"ISO/IEC 27001 Security"</span>, <span class="code-property">issuer</span>: <span class="code-string">"CertiProf"</span></pre>
-                <pre>  },</pre>
-            </div>
-            
-            <div class="code-item">
-                <pre>  {</pre>
-                <pre>    <span class="code-property">id</span>: <span class="code-string">"DATA"</span>, <span class="code-property">title</span>: <span class="code-string">"Python for Data Science"</span>, <span class="code-property">issuer</span>: <span class="code-string">"Udemy"</span></pre>
-                <pre>  }</pre>
-            </div>
-            
-            <pre>];</pre>
-            
-            <div class="code-comment">
-                <pre><span class="code-comment-text">// TODO: Never stop learning...</span></pre>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<!-- SECCIÓN PROYECTOS DESTACADOS - SLIDER -->
-<section class="featured-slider-section">
-    <h2 class="slider-main-title">
-        <i class="fas fa-star title-icon"></i>
-        PROYECTOS DESTACADOS
-    </h2>
-    
-    <div class="slider-container">
-        <!-- Slide 1: Sistema de Inventario -->
-        <div class="slider-slide active">
-            <div class="slide-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop');">
-                <div class="slide-overlay"></div>
-                <div class="slide-content">
-                    <div class="slide-number">01</div>
-                    <h3 class="slide-title">Sistema de Inventario con Automatización</h3>
-                    <p class="slide-description">
-                        Sistema de inventarios con reportes automáticos mensuales y predicciones 
-                        de stock basadas en datos históricos. Dashboard interactivo y alertas en tiempo real.
-                    </p>
-                    <div class="slide-tech">
-                        <span>LARAVEL</span>
-                        <span>PHP</span>
-                        <span>PYTHON</span>
-                        <span>MYSQL</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-      <!-- Slide 2: Reconocimiento Facial -->
-<div class="slider-slide">
-    <div class="slide-image" style="background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070&auto=format&fit=crop');">
-        <div class="slide-overlay"></div>
-        <div class="slide-content">
-            <div class="slide-number">02</div>
-            <h3 class="slide-title">Sistema de Reconocimiento Facial para el Control de Asistencia</h3>
-            <p class="slide-description">
-                Control de asistencia por reconocimiento facial con Python y APIs. Integración con Firebase y AWS. 
-                Panel web en Laravel para reportes en tiempo real.
-            </p>
-            <div class="slide-tech">
-                <span>PYTHON</span>
-                <span>FIREBASE</span>
-                <span>AWS</span>
-                <span>LARAVEL</span>
-            </div>
-        </div>
-    </div>
-</div>
-
-        <!-- Slide 3: Sistema de Cotizaciones -->
-        <div class="slider-slide">
-            <div class="slide-image" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop');">
-                <div class="slide-overlay"></div>
-                <div class="slide-content">
-                    <div class="slide-number">03</div>
-                    <h3 class="slide-title">Sistema de Cotizaciones</h3>
-                    <p class="slide-description">
-                        Plataforma web para generación y gestión de cotizaciones. Seguimiento de clientes y 
-                        aprobaciones en línea.
-                    </p>
-                    <div class="slide-tech">
-                        <span>LARAVEL</span>
-                        <span>PHP</span>
-                        <span>MYSQL</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 4: ERP + App Móvil -->
-        <div class="slider-slide">
-            <div class="slide-image" style="background-image: url('https://images.unsplash.com/photo-1556742031-c6961e8560b0?q=80&w=2070&auto=format&fit=crop');">
-                <div class="slide-overlay"></div>
-                <div class="slide-content">
-                    <div class="slide-number">04</div>
-                    <h3 class="slide-title">ERP + App Móvil con Facturación Electrónica</h3>
-                    <p class="slide-description">
-                        Sistema ERP completo con app móvil en Flutter. Backend en Laravel, automatizaciones en Python.
-                        Facturación electrónica y API RESTful.
-                    </p>
-                    <div class="slide-tech">
-                        <span>FLUTTER</span>
-                        <span>LARAVEL</span>
-                        <span>PYTHON</span>
-                        <span>MYSQL</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 5: SGH Solutions - Destacado -->
-        <div class="slider-slide">
-            <div class="slide-image" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop');">
-                <div class="slide-overlay"></div>
-                <div class="slide-content">
-                    <div class="slide-number">05</div>
-                    <h3 class="slide-title">Sistema Web de Inventario — SGH Solutions</h3>
-                    <p class="slide-description">
-                        Sistema de inventarios para registrar productos, movimientos, niveles de stock y dashboards. 
-                        Alertas automáticas y trazabilidad completa.
-                    </p>
-                    <div class="slide-tech">
-                        <span>REACT</span>
-                        <span>TAILWINDCSS</span>
-                        <span>SUPABASE</span>
-                        <span>NODE.JS</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Controles del slider -->
-        <button class="slider-control prev">
-            <i class="fas fa-chevron-left"></i>
+    <!-- ===== 3. Momento especial ===== -->
+    <section class="finale" id="finale" aria-label="Mensaje final" hidden>
+      <div class="finale__card">
+        <div class="finale__lines" id="finaleLines" role="status" aria-live="polite"></div>
+        <button class="btn btn--primary finale__cta is-away" id="lastBtn" type="button">
+          Hay una última cosa 👀
         </button>
-        <button class="slider-control next">
-            <i class="fas fa-chevron-right"></i>
-        </button>
+      </div>
+    </section>
 
-        <!-- Indicadores -->
-        <div class="slider-indicators">
-            <span class="indicator active"></span>
-            <span class="indicator"></span>
-            <span class="indicator"></span>
-            <span class="indicator"></span>
-            <span class="indicator"></span>
-        </div>
-    </div>
-</section>
+  </main>
 
+  <!-- ===== Tarjetas flotantes de las flores ===== -->
+  <div class="tooltips" id="tooltips" aria-live="polite"></div>
 
+  <!-- ===== Detalles de esquina ===== -->
+  <p class="corner-code" aria-hidden="true">console.log(<span>"Flores amarillas generadas correctamente 🌻"</span>);</p>
 
-<!-- SECCIÓN CONTACTO FINAL - TRABAJEMOS JUNTOS -->
-<section class="final-cta-section">
-    <div class="final-cta-card">
-        <div class="cta-content">
-            <h2 class="cta-title">¿Trabajamos juntos? 👨‍💻</h2>
-            <p class="cta-description">
-                Estoy disponible para nuevos proyectos de desarrollo, automatización de procesos 
-                e integración de soluciones tecnológicas.
-            </p>
-            
-            <div class="cta-whatsapp">
-                <a href="https://wa.me/+51993978303" target="_blank" class="whatsapp-button">
-                    <i class="fab fa-whatsapp"></i>
-                    <span>WhatsApp</span>
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
+  <div class="audio-dock is-away" id="audioDock">
+    <button class="btn btn--chip" id="audioBtn" type="button" aria-pressed="false">🔊 Música</button>
+  </div>
 
-<!-- SECCIÓN FRASE FINAL - SIN CARD -->
-<section class="final-quote-section">
-    <div class="quote-container">
-        <div class="quote-icon">
-            <i class="fas fa-quote-right"></i>
-        </div>
-        
-        <p class="quote-text">
-            "La mejor solución es la que simplifica un problema complejo"
-        </p>
-        <p class="quote-author">- ChapuDev</p>
-        
-        <p class="second-quote">
-            "El código que escribes hoy es el legado que dejas mañana"
-        </p>
-        <p class="second-quote-author">- ChapuDev</p>
-        
-        <div class="copyright">
-            © 2026 ChapuDev. Todos los derechos reservados.
-        </div>
-    </div>
-</section>
-    </main>
+  <audio id="bgm" src="assets/audio/musica.mp3" loop preload="none"></audio>
 
-    <!-- MODAL PARA CUMPLEAÑOS -->
-    <div id="birthdayModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>🎂 CUENTA REGRESIVA 🎂</h2>
-                <span class="close-modal">&times;</span>
-            </div>
-            <div class="modal-body">
-                <p class="birthday-date">Mi cumpleaños es el <strong>31 de agosto</strong></p>
-                <div class="countdown-container">
-                    <div class="countdown-box">
-                        <span class="countdown-number" id="days">0</span>
-                        <span class="countdown-label">Días</span>
-                    </div>
-                    <div class="countdown-box">
-                        <span class="countdown-number" id="hours">0</span>
-                        <span class="countdown-label">Horas</span>
-                    </div>
-                    <div class="countdown-box">
-                        <span class="countdown-number" id="minutes">0</span>
-                        <span class="countdown-label">Minutos</span>
-                    </div>
-                    <div class="countdown-box">
-                        <span class="countdown-number" id="seconds">0</span>
-                        <span class="countdown-label">Segundos</span>
-                    </div>
-                </div>
-                <p class="next-birthday" id="nextBirthdayText"></p>
-            </div>
-        </div>
-    </div>
-
-    <script src="main.js"></script>
+  <script src="js/app.js" defer></script>
 </body>
 </html>
-
-
-

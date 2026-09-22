@@ -1,0 +1,2 @@
+Coloca aquí un archivo llamado "musica.mp3" si quieres música ambiental.
+Sin él, la página funciona igual: el botón de música simplemente se retira.
